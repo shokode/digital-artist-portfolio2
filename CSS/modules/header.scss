@@ -1,0 +1,289 @@
+@use '../default/index.scss';
+
+@mixin gradeText($angle: 45deg, $color01:#4b4a02, $color02:#2b63b8 ) {
+  display: inline-block;
+  background: linear-gradient($angle, $color01 0%, $color02 100%);
+          background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* variables */
+$main-color: #b89b1c;
+$light-color: #eeedde;
+$sub-color: #191a03; 
+$grade-color: linear-gradient(90deg,#c2f0b8 0%,#e5eeb1 100%);
+$overlay-color: #ffeff0;
+$box-shadow-plane: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+$box-shadow-main: rgba(240, 227, 165, 0.4) 0 7px 29px 0;
+
+/* header */
+.header {
+  overflow: hidden;
+
+  .container {
+    background: linear-gradient(45deg, #f0f0ea 0%, #e0dfa5 100%);
+    padding: 0;
+
+    .top {
+      background: $light-color;
+      box-shadow: $box-shadow-main;
+      min-height: 100px;
+
+      .inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1920px;
+        margin: 0 auto;
+        padding-left: 2%;
+
+        .left {
+          display: flex;
+          align-items: center;
+          padding: 25px 0;
+
+          .logo a {
+            display: flex;
+            align-items: stretch;
+            width: 30px;
+            height: 30px;
+          }
+        }
+
+        .right {
+          .contact {
+            background: $main-color;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 0 20px;
+
+            .icon {
+              width: 30px;
+              height: 30px;
+              line-height: 0;
+            }
+
+            span {
+              font-size: 20px;
+              padding-left: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    .first-view {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 1920px;
+      margin: 0 auto;
+      padding: 50px 2% 0 2%;
+      .bg01 {
+        position: absolute;
+        z-index: 1;
+        top: -50px;
+        left: 0;
+        background-image: radial-gradient(at 0% 50%, rgb(246, 227, 174) 0px, transparent 50%);
+        background-size: cover;
+        width: 400px;
+        height: 400px;
+      }
+      .text{
+        position: relative;
+        z-index: 3;
+        padding: 0 10px 0 0;
+        .en{
+          span{
+            color: $sub-color;
+            font-family: "Jost";
+            font-weight: 400;
+            letter-spacing: 4px;
+            font-size: 28px;
+            margin: 0 0 0 0;
+            // @include gradeText;
+          }
+        }
+        h2{
+          line-height: 1.3;
+          font-size: 50px;
+          margin: 15px 0 0 0;
+          .color{
+            color: $main-color;
+          }
+        }
+        .sentence{
+          margin: 25px 0 0 0;
+          p{
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 34px;
+            .color{
+              color: $main-color;
+            }
+
+          }
+        }
+
+          .award-wrapper{
+            list-style: none;
+            display: flex;
+            align-items: stretch;
+            margin: 20px 0 0 0;
+            .award{
+              position: relative;
+              z-index: 1;
+              margin: 0 30px 0 0;
+              .mark{
+                display: flex;
+                align-items: center;
+                justify-content: center; 
+                img {
+                  position: relative;
+                  top: 5px;
+                  width: 45px;
+                  height: auto;
+                }
+                .catch{
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  text-align: center;
+                  font-family: "Jost";
+                  font-weight: 400;
+                  text-align: center;
+                  margin: 0 -5px 0 -5px;
+                  padding: 0 0 0 0 ;
+                }
+                .sub,
+                .main{
+                  .grade{
+                    @include gradeText(45deg, #b7812b, #d98cd9);
+                    .jp{
+                      font-family: "Murecho";
+                      font-weight: 500;
+                    }
+                    .middle{
+                      font-size: 0.7em;
+                    }
+                  }
+                }
+                .sub{
+                  line-height: 1.45;
+                  .grade{
+                    letter-spacing: 2px;
+                    font-size: 17px;
+                  }
+                }
+                .main{
+                  line-height: 1.0;
+                  .grade{
+                    font-size: 45px;
+                    padding: 0 0 5px 0 ;
+                  }
+                }
+              }
+              .line{
+                position: relative;
+                z-index: 2;
+                text-align: center;
+                margin: -15px 0 0 0;
+                p{
+                  display: inline-block;
+                  color: #ffffff;
+                  background: linear-gradient(90deg, #b1791b 0%, #c4a538 100%);
+                  font-size: 18px;
+                  padding: 3px 15px 3px 15px;
+
+                }
+              }
+              &:last-child{
+                margin: 0 0 0 0;
+              }
+            }
+          }
+          .button {
+            border-radius: 100px;
+            box-shadow: $box-shadow-main;
+            background: $main-color;
+            width: 425px;
+            margin: 40px 0 0 0;
+            a{
+              display: flex;
+              color: $light-color;
+              align-items: center;
+              justify-content: center;
+              padding: 30px 0 30px 0;
+              .catch{
+                font-size: 24px;
+                padding: 0 10px 0 0;            
+              }
+              img{
+                line-height: 0;
+                width: 30px;
+                height: auto;
+              }
+            }
+          }
+      }
+      .visual {
+        .row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .icon {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: solid 4px $light-color;
+              border-radius: 50%;
+              box-shadow: $box-shadow-main;
+              background: $grade-color;
+              width: 80px;
+              height: 80px;
+              img {
+                  width: 60%;
+                  height: auto;
+              }
+          }
+          .thumb {
+            overflow: hidden;
+            border-radius: 50%;
+            box-shadow: $box-shadow-main;
+
+            width: 150px;
+            height: 150px;
+            flex: 0 0 auto;        // ←縮まない
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              display: block;
+              border-radius: 50%;
+              box-shadow: rgba(238, 173, 173, 0.4) 0 7px 29px 0;
+            }
+          }
+
+          &.row02 {
+            justify-content: center; // ←真ん中寄せ
+            gap: 24px;               // ←左右アイコンとの間隔
+
+            .thumb {
+              width: 450px;
+              height: 450px;
+              flex: 0 0 450px;       // ←ここが超重要（絶対450にする）
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
