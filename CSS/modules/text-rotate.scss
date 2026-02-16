@@ -1,0 +1,28 @@
+@use '../default/index' as *;
+
+.text-rotate {
+    overflow: hidden;
+    width: 100%;
+    padding: 0 0 40px 0;
+    ul{
+        position: relative;
+        display: flex;
+        list-style-type: none;
+        white-space: nowrap;
+        margin: 15px 0 0 0;
+        padding: 0 0 0 0;
+        will-change: transform opacity;
+        gap: 2.5rem;
+        li{
+            position: relative;
+            color: $main-color;
+            transform: skew(-15deg);
+            box-shadow: $box-shadow-main;
+            background: #fff;
+            letter-spacing: 3px;
+            font-size: 24px;
+            padding: 5px 25px 5px 25px;
+        }
+
+    }
+}

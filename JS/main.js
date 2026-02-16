@@ -83,22 +83,23 @@ gsap.to(".first-view .bg01" ,{
     repeatDelay: 2,
 })
 
-//text rotation
+// text rotation
 function createScrollingText(textGroups) {
-    const container = document.getElementById("textRotate");
-    container.innerHTML = "";
-    textGroups.forEach((textArray, index) => {
-        const ul = document.createElement("ul");
-        //2回繰り返してシームレスにする
-        for (let i = 0; i <2; i++){
-            textArray.forEach((text) => {
-                const li = document.createElement("li");
-                li.textContent = text;
-                ul.appendChild(li);
-            })
-        }
-        container.appendChild(ul);
-    })
+  const container = document.getElementById("textRotate");
+  if (!container) return;
+
+  container.innerHTML = "";
+  textGroups.forEach((textArray) => {
+    const ul = document.createElement("ul");
+    for (let i = 0; i < 2; i++) {
+      textArray.forEach((text) => {
+        const li = document.createElement("li");
+        li.textContent = text;
+        ul.appendChild(li);
+      });
+    }
+    container.appendChild(ul);
+  });
 }
 
 const textGroups = [
@@ -107,6 +108,8 @@ const textGroups = [
   ["Portfolio", "Gallery", "Featured", "Series", "Collections", "Process", "Timelapse"],
   ["About", "Commission Info", "Contact", "Pricing", "Terms", "Schedule", "Links"]
 ];
+
+createScrollingText(textGroups); // ←これが必要
 
 // gsap.utils.toArray(".first-view .row .thumb img").forEach((img, index) =>{
 //     const originalSrc = img.getAttribute("src");
