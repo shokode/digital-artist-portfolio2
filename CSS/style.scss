@@ -2,26 +2,3 @@
 @use './default/index.scss';
 @use './modules/header.scss';
 @use './modules/text-rotate.scss';
-
-
-
-
-// @mixin button($width, $bgcolor){
-//     width: $width;
-//     display: inline-block;
-//     margin-bottom: 1em;
-//     padding: 0.5em 2em;
-//     border-radius:  4px;
-//     box-sizing: border-box;
-//     background-color: $bgcolor;
-//     text-align: center;
-//     text-decoration: none;
-// }
-
-// .button {
-//     @include button(25%, #bbcbe4 )
-// }
-
-
-
-
