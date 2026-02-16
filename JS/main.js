@@ -6,6 +6,31 @@
 //
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+const sources = [
+  "./img/AMWS3.png",
+  "./img/AMWSdarkpng.png",
+  "./img/AMWS2png.png",
+  "",
+  "./img/suzuri.png",
+  // ここに追加していくだけ
+];
+
+gsap.utils.toArray(".first-view .row .thumb img").forEach((img, index) => {
+  let i = 0;
+
+  // 最初の画像
+  img.src = sources[i];
+
+  const next = () => {
+    i = (i + 1) % sources.length;
+    img.src = sources[i];
+  };
+
+  gsap.timeline({ repeat: -1, delay: index * 0.5 })
+    .to(img, { autoAlpha: 0, duration: 0.6, onComplete: next })
+    .to(img, { autoAlpha: 1, duration: 0.6 })
+    .to({}, { duration: 2 }); // 表示時間（ここ調整）
+});
 
 
 let iconTL = gsap.timeline({ repeat: -1,})
@@ -37,7 +62,7 @@ gsap.utils.toArray(".first-view .row .icon").forEach((icon,index) => {
         duration: 1.5,
         ease: "power2.out"
     })
-})
+});
 
 
 
