@@ -5,33 +5,40 @@
 // ◆ HEADEAR：ヘッダーアニメション
 //
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
 const sources = [
   "./img/AMWS3.png",
   "./img/AMWSdarkpng.png",
   "./img/AMWS2png.png",
-  "",
+  "./img/work_06.png",
   "./img/suzuri.png",
-  // ここに追加していくだけ
+  "./img/work_06.png",
+  "./img/work_24.png",
+  "./img/work_25.png",
+  "./img/work_26.png",
+  "./img/work_27.png",
+
 ];
 
 gsap.utils.toArray(".first-view .row .thumb img").forEach((img, index) => {
-  let i = 0;
+  let current = -1;
 
-  // 最初の画像
-  img.src = sources[i];
-
-  const next = () => {
-    i = (i + 1) % sources.length;
-    img.src = sources[i];
+  const pickRandom = () => {
+    let next;
+    do {
+      next = Math.floor(Math.random() * sources.length);
+    } while (next === current); // 連続同じを防ぐ
+    current = next;
+    img.src = sources[current];
   };
 
-  gsap.timeline({ repeat: -1, delay: index * 0.5 })
-    .to(img, { autoAlpha: 0, duration: 0.6, onComplete: next })
-    .to(img, { autoAlpha: 1, duration: 0.6 })
-    .to({}, { duration: 2 }); // 表示時間（ここ調整）
-});
+  // 初期
+  pickRandom();
 
+  gsap.timeline({ repeat: -1, delay: index * 0.5 })
+    .to(img, { autoAlpha: 0, duration: 0.6, onComplete: pickRandom })
+    .to(img, { autoAlpha: 1, duration: 0.6 })
+    .to({}, { duration: 2 });
+});
 
 let iconTL = gsap.timeline({ repeat: -1,})
 
@@ -66,14 +73,6 @@ gsap.utils.toArray(".first-view .row .icon").forEach((icon,index) => {
 
 
 
-// gsap.from(".awerd-wrapper .award",{
-//     y: 30.         
-//     opacity:0,
-//     duration: 0.6,
-//     ease:"power2.out"
-//     stagger: 0.2,
-// })
-
 
 gsap.to(".first-view .bg01" ,{
     autoAlpha: 0.5,
@@ -83,6 +82,31 @@ gsap.to(".first-view .bg01" ,{
     yoyo: true,
     repeatDelay: 2,
 })
+
+//text rotation
+function createScrollingText(textGroups) {
+    const container = document.getElementById("textRotate");
+    container.innerHTML = "";
+    textGroups.forEach((textArray, index) => {
+        const ul = document.createElement("ul");
+        //2回繰り返してシームレスにする
+        for (let i = 0; i <2; i++){
+            textArray.forEach((text) => {
+                const li = document.createElement("li");
+                li.textContent = text;
+                ul.appendChild(li);
+            })
+        }
+        container.appendChild(ul);
+    })
+}
+
+const textGroups = [
+  ["Illustration", "Character Design", "Icon Design", "Banner Design", "Key Visuals", "Cover Art", "Merch Art"],
+  ["Fanart", "Original Works", "Commissions", "Commercial Work", "Personal Projects", "Sketches", "WIPs"],
+  ["Portfolio", "Gallery", "Featured", "Series", "Collections", "Process", "Timelapse"],
+  ["About", "Commission Info", "Contact", "Pricing", "Terms", "Schedule", "Links"]
+];
 
 // gsap.utils.toArray(".first-view .row .thumb img").forEach((img, index) =>{
 //     const originalSrc = img.getAttribute("src");
