@@ -1,4 +1,4 @@
-@use '../default/index.scss';
+@use '../default/index.scss' as *;
 
 @mixin gradeText($angle: 45deg, $color01:#4b4a02, $color02:#2b63b8 ) {
   display: inline-block;

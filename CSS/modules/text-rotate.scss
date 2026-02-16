@@ -1,4 +1,6 @@
-@use '../default/index' as *;
+@charset "utf-8";
+
+@use '../default/index.scss' as *;
 
 .text-rotate {
     overflow: hidden;
