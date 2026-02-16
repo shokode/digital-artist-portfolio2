@@ -1,0 +1,16 @@
+@mixin gradeBorder($width: 12px,$border-width: 2px,$color01: #e7b837,$color02: #f5c4c8,$color03: #ed7a4d) {
+    position: absolute;
+    z-index: 2;
+    opacity: 0.9;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-width: $border-width;
+    border-style: solid;
+       border-image: linear-gradient(90deg, $color01 0%, $color02 45%, $color03 70%, $color02 85%, $color01 90% 100%);
+    -o-border-image: linear-gradient(90deg, $color01 0%, $color02 45%, $color03 70%, $color02 85%, $color01 90% 100%);
+    border-image-slice: 1;
+    content: "";
+    width: calc(100% - $width);
+    height: calc(100% - $width);
+}
