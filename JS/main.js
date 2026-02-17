@@ -84,12 +84,16 @@ gsap.to(".first-view .bg01" ,{
 })
 
 // text rotation
+
+//scroll speed(sec)
+const scrollSpeed = 45;
+
 function createScrollingText(textGroups) {
   const container = document.getElementById("textRotate");
   if (!container) return;
 
   container.innerHTML = "";
-  textGroups.forEach((textArray) => {
+  textGroups.forEach((textArray, index) => {
     const ul = document.createElement("ul");
     for (let i = 0; i < 2; i++) {
       textArray.forEach((text) => {
@@ -104,18 +108,26 @@ function createScrollingText(textGroups) {
 }
 
 function startGSAPScrolling(ul, direction = 1){
-    const ulWidth = ul.scrollwidth / 2;
+    const ulWidth = ul.scrollWidth / 2;
 
-    gsap.set(ul, { x: direction === 1 ? -ulwidth : 0, autoAlpha: 1})
+    gsap.set(ul, { x: direction === 1 ? -ulWidth : 0, autoAlpha: 1})
     //無限ループのアニメーション関数
-    function animateScroll(){
+    function animateScroll() {
         gsap.to(ul,{
             duration: scrollSpeed,
-            x: direction == 1 ? 0 : -ulwidth,
+            x: direction == 1 ? 0 : -ulWidth,
             ease: "linear",
             onComplete: resetAndLoop,
         })
     }
+
+    //after animetionリセットして再開
+    function resetAndLoop() {
+        gsap.set(ul,{ x: direction === 1 ? -ulWidth : 0, autoAlpha: 0});
+        gsap.to(ul, { autoAlpha: 1, duration: 0.5});
+        animateScroll();
+    }
+    animateScroll();
 }
 
 
