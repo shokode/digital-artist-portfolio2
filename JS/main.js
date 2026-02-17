@@ -99,8 +99,25 @@ function createScrollingText(textGroups) {
       });
     }
     container.appendChild(ul);
+    startGSAPScrolling(ul, index % 2 === 0 ? 1 : -1);
   });
 }
+
+function startGSAPScrolling(ul, direction = 1){
+    const ulWidth = ul.scrollwidth / 2;
+
+    gsap.set(ul, { x: direction === 1 ? -ulwidth : 0, autoAlpha: 1})
+    //無限ループのアニメーション関数
+    function animateScroll(){
+        gsap.to(ul,{
+            duration: scrollSpeed,
+            x: direction == 1 ? 0 : -ulwidth,
+            ease: "linear",
+            onComplete: resetAndLoop,
+        })
+    }
+}
+
 
 const textGroups = [
   ["Illustration", "Character Design", "Icon Design", "Banner Design", "Key Visuals", "Cover Art", "Merch Art"],
