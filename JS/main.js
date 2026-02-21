@@ -88,6 +88,18 @@ gsap.to(".first-view .bg01" ,{
 //scroll speed(sec)
 const scrollSpeed = 45;
 
+function makeRowLongEnough(ul, container) {
+  const originals = Array.from(ul.children);      // 1 copy
+  const minWidth = container.clientWidth * 2;     // enough to avoid gaps
+  while (ul.scrollWidth < minWidth) {
+    originals.forEach(n => ul.appendChild(n.cloneNode(true)));
+  }
+}
+
+function duplicateOnce(ul) {
+  Array.from(ul.children).forEach(n => ul.appendChild(n.cloneNode(true)));
+}
+
 function createScrollingText(textGroups) {
   const container = document.getElementById("textRotate");
   if (!container) return;
@@ -109,32 +121,38 @@ function createScrollingText(textGroups) {
     container.appendChild(ul);
 
     requestAnimationFrame(() => {
+      makeRowLongEnough(ul, container);
+      //duplicateOnce(ul);
       startGSAPScrolling(ul, index % 2 === 0 ? 1 : -1);
     });
   });
 }
 
 function startGSAPScrolling(ul, direction = 1) {
+  gsap.killTweensOf(ul);
+
   const half = ul.scrollWidth / 2; // 2回並べた半分が1周分
   if (!half) return;
 
-  // 片方向に流し続け、範囲を超えた分を巻き戻す
-  gsap.set(ul, { x: 0, autoAlpha: 1 });
+  const dur = half / scrollSpeed;
 
-  const dur = scrollSpeed;
-  const sign = direction === 1 ? -1 : 1; // 右→左ならマイナス移動
+  // const sign = direction === 1 ? -1 : 1; // 右→左ならマイナス移動
+  const toLeft = direction === 1;      // your current meaning
+  const fromX = toLeft ? 0 : -half;    // KEY: start at -half for left→right
+  const toX   = toLeft ? -half : 0;
+
+  const wrap = gsap.utils.wrap(-half, 0);
+
+  // 片方向に流し続け、範囲を超えた分を巻き戻す
+  gsap.set(ul, { x:fromX, autoAlpha: 1 });
 
   gsap.to(ul, {
-    x: sign * half,
+    x: toX,
     duration: dur,
     ease: "none",
     repeat: -1,
     modifiers: {
-      x: (x) => {
-        const v = parseFloat(x);
-        // 0〜half の範囲に折り返し
-        return ((v % (sign * half)) || 0) + "px";
-      }
+      x: (x) => wrap(parseFloat(x)) + "px"
     }
   });
 }
