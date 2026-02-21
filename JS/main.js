@@ -93,8 +93,11 @@ function createScrollingText(textGroups) {
   if (!container) return;
 
   container.innerHTML = "";
+
   textGroups.forEach((textArray, index) => {
-    const ul = document.createElement("ul");
+    const ul = document.createElement("ul"); // ←これが必要
+
+    // 2回繰り返してループ用にする
     for (let i = 0; i < 2; i++) {
       textArray.forEach((text) => {
         const li = document.createElement("li");
@@ -102,32 +105,38 @@ function createScrollingText(textGroups) {
         ul.appendChild(li);
       });
     }
+
     container.appendChild(ul);
-    startGSAPScrolling(ul, index % 2 === 0 ? 1 : -1);
+
+    requestAnimationFrame(() => {
+      startGSAPScrolling(ul, index % 2 === 0 ? 1 : -1);
+    });
   });
 }
 
-function startGSAPScrolling(ul, direction = 1){
-    const ulWidth = ul.scrollWidth / 2;
+function startGSAPScrolling(ul, direction = 1) {
+  const half = ul.scrollWidth / 2; // 2回並べた半分が1周分
+  if (!half) return;
 
-    gsap.set(ul, { x: direction === 1 ? -ulWidth : 0, autoAlpha: 1})
-    //無限ループのアニメーション関数
-    function animateScroll() {
-        gsap.to(ul,{
-            duration: scrollSpeed,
-            x: direction == 1 ? 0 : -ulWidth,
-            ease: "linear",
-            onComplete: resetAndLoop,
-        })
-    }
+  // 片方向に流し続け、範囲を超えた分を巻き戻す
+  gsap.set(ul, { x: 0, autoAlpha: 1 });
 
-    //after animetionリセットして再開
-    function resetAndLoop() {
-        gsap.set(ul,{ x: direction === 1 ? -ulWidth : 0, autoAlpha: 0});
-        gsap.to(ul, { autoAlpha: 1, duration: 0.5});
-        animateScroll();
+  const dur = scrollSpeed;
+  const sign = direction === 1 ? -1 : 1; // 右→左ならマイナス移動
+
+  gsap.to(ul, {
+    x: sign * half,
+    duration: dur,
+    ease: "none",
+    repeat: -1,
+    modifiers: {
+      x: (x) => {
+        const v = parseFloat(x);
+        // 0〜half の範囲に折り返し
+        return ((v % (sign * half)) || 0) + "px";
+      }
     }
-    animateScroll();
+  });
 }
 
 
