@@ -1,26 +1,54 @@
 // GSAPとSplitTextのプラグインを登録
 gsap.registerPlugin(ScrollTrigger);
 
+const textRotateAnimation = gsap.timeline({
+	defaults:{
+		autoAlpha: 0,
+		filter:"blur(30px)",
+		duration: 0.8,
+		scale:1.2,
+	},
+	scrollTrigger:{
+		trigger: "#textRotate",
+		start: "top-=35% 60%",
+		// markers: true,
+	}
+})
+
+textRotateAnimation.from("#textRotate",{});
+
+// const targetAnimation = gsap.timeline({
+// 	scrollTrigger: {
+// 		trigger: ".target",
+// 		start: 'top 100%', //とりがー、びゅーぽーと
+// 		toggleActions: "play none none reset",
+// 		markers: true
+// 	},
+// })
+// targetAnimation
+// .from(".target ul li", {autoAlpha: 0, y:100, stagger:0.05, duration: 1})
 
 // start -----------------------------------------------------------------------------------//
 //
 //			.text-rotateのアニメーション
 // 
 
-const textRotateAnimation = gsap.timeline({
-	defaults: {
-		autoAlpha: 0,
-		filter: "blur(30px)",
-		duration: 0.8,
-		scale:1.2
-	},
-	scrollTrigger: {
-		trigger: "#textRotate",
-		start: 'top-=35% 60%',
-	},
-});
 
-textRotateAnimation.from("#textRotate",{})
+
+// const textRotateAnimation = gsap.timeline({
+// 	defaults: {
+// 		autoAlpha: 0,
+// 		filter: "blur(30px)",
+// 		duration: 0.8,
+// 		scale:1.2
+// 	},
+// 	scrollTrigger: {
+// 		trigger: "#textRotate",
+// 		start: 'top-=35% 60%',
+// 	},
+// });
+
+// textRotateAnimation.from("#textRotate",{})
 
 // start -----------------------------------------------------------------------------------//
 //

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* variables */
 /* header */
 .header {
@@ -250,219 +251,86 @@
   flex: 0 0 450px;
 }
 
-@media only screen and (max-width: 960px) {
-  .header .container {
-    padding: 0;
-  }
-  .header .container .top .inner {
-    max-width: 1920px;
-    margin: 0 auto;
-    padding-right: 2%;
-  }
-  .header .container .top .inner .left {
-    display: block;
-    padding: 10px 0;
-  }
-  .header .container .top .inner .left .logo a {
-    width: 45vw;
-  }
-  .header .container .top .inner .left h1 {
-    line-height: 1.1;
-    letter-spacing: 2px;
-    font-size: clamp(16px, 4.2vw, 20px);
-    padding: 3px 0 3px 5px;
-  }
-  .header .container .top .inner .right a.contact {
-    border-radius: 100px;
-    justify-content: center;
-    border: 2px solid #eeedde;
-    box-shadow: rgba(240, 227, 165, 0.4) 0 7px 29px 0;
-    background: #b89b1c;
-    width: min(80%, 300px);
-    margin: 30px auto 0;
-  }
-  .header .container .top .inner .right a.contact .icon {
-    width: 3.25vw;
-    height: auto;
-  }
-  .header .container .top .inner .right a.contact span {
-    font-size: clamp(14px, 3.6vw, 16px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 0;
-    color: #eeedde;
+/**********************************************************************************
+□ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □ □  
+
+◆	Stylesheet: 1024px～1280px(小型PC)までのモニタで適用	◆
+
+start----------------------------------------------------------------------------*/
+/* =========================
+   Tablet (1024px - 1280px)
+========================= */
+@media screen and (min-width: 1024px) and (max-width: 1280px) {
+  .header .container .top {
+    min-height: 100px;
   }
   .header .container .first-view {
-    display: block;
-    max-width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    padding: 50px 4% 0;
+    padding: 50px 2% 0;
   }
   .header .container .first-view .bg01 {
-    top: -50px;
-    left: 0;
-    width: 50vw;
-    height: 50vw;
+    width: 400px;
+    height: 400px;
   }
   .header .container .first-view .text {
-    padding: 0;
+    padding-right: 10px;
   }
   .header .container .first-view .text .en span {
-    font-size: 18px;
+    font-size: 28px;
     letter-spacing: 4px;
-    margin: 0 0 0 7px;
   }
   .header .container .first-view .text h2 {
-    font-size: 28px;
-    margin: 15px 0 0 0;
+    font-size: 50px;
   }
   .header .container .first-view .text .sentence p {
-    font-size: 16px;
-  }
-  .header .container .first-view .text .award-wrapper {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 0;
+    font-size: 34px;
   }
   .header .container .first-view .text .award-wrapper .award {
-    margin: 0;
-  }
-  .header .container .first-view .text .award-wrapper .award .award-wrapper > .award:nth-child(1) {
-    width: 100%;
-    max-width: 260px;
-    margin: 0;
-  }
-  .header .container .first-view .text .award-wrapper .award .award-wrapper > .award:nth-child(2),
-  .header .container .first-view .text .award-wrapper .award .award-wrapper > .award:nth-child(3) {
-    width: calc(50% - 12px);
-    max-width: 240px;
-    margin: 0;
+    margin-right: 30px;
   }
   .header .container .first-view .text .award-wrapper .award .mark img {
-    position: relative;
-    top: 5px;
-    width: clamp(28px, 10vw, 30px);
-    height: auto;
+    width: 45px;
   }
   .header .container .first-view .text .award-wrapper .award .mark .sub .grade {
-    font-size: 14px;
+    font-size: 17px;
     letter-spacing: 2px;
   }
   .header .container .first-view .text .award-wrapper .award .mark .main .grade {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 45px;
   }
   .header .container .first-view .text .award-wrapper .award .line p {
-    font-size: 13.5px;
-    padding: 4px 10px;
-    width: 100%;
-    box-sizing: border-box;
+    font-size: 18px;
+    padding: 3px 15px;
   }
   .header .container .first-view .text .button {
-    border-radius: 100px;
-    justify-content: center;
-    border: 2px solid #eeedde;
-    box-shadow: rgba(240, 227, 165, 0.4) 0 7px 29px 0;
-    background: #b89b1c;
-    width: min(80%, 300px);
-    margin: 30px auto 0;
+    width: 425px;
   }
   .header .container .first-view .text .button a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 0;
-    color: #eeedde;
+    padding: 30px 0;
   }
-  .header .container .first-view .visual {
-    width: 100%;
-    margin: 30px auto 0;
+  .header .container .first-view .text .button a .catch {
+    font-size: 24px;
+    padding-right: 10px;
   }
-  .header .container .first-view .visual .row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .header .container .first-view .text .button a img {
+    width: 30px;
   }
   .header .container .first-view .visual .row .icon {
-    width: clamp(56px, 15vw, 80px);
-    height: clamp(56px, 15vw, 80px);
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-    overflow: hidden;
-    flex: 0 0 auto;
+    width: 80px;
+    height: 80px;
   }
   .header .container .first-view .visual .row .icon img {
-    width: 100%;
-    height: 100%;
-    -o-object-fit: contain;
-       object-fit: contain;
-    display: block;
+    width: 60%;
   }
   .header .container .first-view .visual .row .thumb {
-    width: clamp(70px, 22vw, 150px);
-    height: clamp(70px, 22vw, 150px);
-    border-radius: 50%;
-    overflow: hidden;
-    flex: 0 0 auto;
+    width: 150px;
+    height: 150px;
   }
-  .header .container .first-view .visual .row .thumb img {
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
-    display: block;
-  }
-  .header .container .first-view .visual .row.row02 .icon {
-    display: none;
+  .header .container .first-view .visual .row.row02 {
+    gap: 24px;
   }
   .header .container .first-view .visual .row.row02 .thumb {
-    width: clamp(200px, 62.5vw, 320px);
-    height: clamp(200px, 62.5vw, 320px);
-    flex: 0 0 auto;
+    width: 450px;
+    height: 450px;
+    flex: 0 0 450px;
   }
-}
-.text-rotate {
-  overflow: hidden;
-  width: 100%;
-  padding: 0 0 40px 0;
-}
-.text-rotate ul {
-  position: relative;
-  display: flex;
-  list-style-type: none;
-  white-space: nowrap;
-  margin: 15px 0 0 0;
-  padding: 0 0 0 0;
-  will-change: transform opacity;
-  gap: 2.5rem;
-}
-.text-rotate ul li {
-  position: relative;
-  color: #b89b1c;
-  transform: skew(-15deg);
-  box-shadow: rgba(240, 227, 165, 0.4) 0 7px 29px 0;
-  background: #fff;
-  letter-spacing: 3px;
-  font-size: 24px;
-  padding: 5px 25px 5px 25px;
-}
-.text-rotate ul li::before {
-  position: absolute;
-  z-index: 2;
-  opacity: 0.9;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-width: 3px;
-  border-style: solid;
-  border-image: linear-gradient(90deg, #e7b837 0%, #f5c4c8 45%, #ed7a4d 70%, #f5c4c8 85%, #e7b837 90% 100%);
-  -o-border-image: linear-gradient(90deg, #e7b837 0%, #f5c4c8 45%, #ed7a4d 70%, #f5c4c8 85%, #e7b837 90% 100%);
-  border-image-slice: 1;
-  content: "";
-  width: calc(100% - 0px);
-  height: calc(100% - 0px);
 }
