@@ -277,6 +277,21 @@
       }
 
     }
+    #textRotate {
+    overflow: hidden;
+    ul {
+      display: flex;
+      white-space: nowrap;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      flex: 0 0 auto;
+      padding-right: 2rem; // 任意（gap代わり）
+    }
+  }
   }
 }
 
@@ -497,14 +512,20 @@
 
           }
       }
-      .text-rotat{
+      #textRotate {
         overflow: hidden;
-        ul{
+
+        ul {
           display: flex;
           white-space: nowrap;
           list-style: none;
           margin: 0;
           padding: 0;
+        }
+
+        li {
+          flex: 0 0 auto;
+          padding-right: 2rem; // 任意（gap代わり）
         }
       }
       }
